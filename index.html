@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nica</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="images/cuadro tallado.jpg">
+  
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">nica shop</div>
+    <input type="text" class="search" placeholder="Buscar productos...">
+    <div class="icons">
+      <button id="account-btn">Cuenta</button>
+      <button id="cart-btn">🛒(0)</button>
+    </div>
+  </header>
+
+  <!-- BOTÓN MENU -->
+  <button id="menu-toggle" class="menu-toggle">☰</button>
+
+  <!-- MENÚ LATERAL -->
+  <nav id="side-menu" class="side-menu">
+    <ul id="main-menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#" id="otras-cat-link">Otras categorías</a></li>
+      <li><a href="#">Los Mas Vendidos</a></li>
+      <li><a href="#">Novedades</a></li>
+      <li><a href="login.html">Identifícate</a></li>
+    </ul>
+    <ul id="otras-categorias-submenu" style="display: none;">
+      <li><a href="#" id="volver-menu">← Volver</a></li>
+      <li><a href="#" onclick="mostrarDecoracion()">Decoración</a></li>
+      <li><a href="#" onclick="filtrarPorCategoria('Instrumentos')">Instrumentos</a></li>
+      <li><a href="#" onclick="filtrarPorCategoria('Zapatos')">Zapatos</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== PÁGINA PRINCIPAL ===== -->
+  <div id="pagina-principal">
+    <!-- SLIDER PRINCIPAL -->
+    <div class="publicidad-slider" id="slider-principal">
+      <div class="slide active">
+        <img src="images/WhatsApp Image 2025-06-18 at 8.30.48 AM.jpeg" alt="Promoción 1">
+        <div class="texto-slide">
+          <h2>¡Descubre lo nuevo en artesanía!</h2>
+          <p>Productos únicos hechos por manos nicaragüenses</p>
+          <a href="#productos" class="btn-slide">Ver más</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/WhatsApp Image 2025-06-18 at 7.56.38 AM.jpeg" alt="Promoción 2">
+        <div class="texto-slide">
+          <h2>nica Shop te conecta</h2>
+          <p>Con lo mejor de nuestra cultura y tradición</p>
+          <a href="#artesanias" class="btn-slide">Explorar</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/WhatsApp Image 2025-06-18 at 8.34.52 AM.jpeg" alt="Promoción 3">
+        <div class="texto-slide">
+          <h2>Apoya lo local</h2>
+          <p>Compra a pequeños emprendimientos de Nicaragua</p>
+          <a href="#vendedores" class="btn-slide">Conócelos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARRA DE CATEGORÍAS -->
+    <nav class="nav" id="barra-categorias">
+      <ul>
+        <li><a href="#" onclick="filtrarPorCategoria('todos')">Todo</a></li>
+        <li><a href="#" onclick="filtrarPorCategoria('Artesania')">Artesanía</a></li>
+        <li><a href="#" onclick="filtrarPorCategoria('Trajes')">Trajes</a></li>
+        <li><a href="#" onclick="filtrarPorCategoria('Arte')">Arte</a></li>
+        <li><a href="#" onclick="filtrarPorCategoria('Juguetes')">Juguetes</a></li>
+      </ul>
+    </nav>
+
+    <!-- LISTA DE PRODUCTOS PRINCIPALES -->
+    <main class="product-grid" id="product-list">
+      <h2>Productos</h2>
+      <div id="Lista-Producto"></div>
+    </main>
+  </div>
+  <!-- /#pagina-principal -->
+
+  <!-- ===== PÁGINA DECORACIÓN ===== -->
+  <main id="pagina-decoracion" style="display: none; padding: 2rem;">
+   
+
+    <!-- SLIDER DECORACIÓN -->
+    <div class="slider-decoracion">
+      <div class="slide-deco active">
+        <img src="images/slideco.jpeg" alt="Decoración 1">
+        <div class="texto-slide">
+          <h2>Ambienta tu hogar</h2>
+          <p>Decoración artesanal para todos los espacios</p>
+        </div>
+      </div>
+      <div class="slide-deco">
+        <img src="images/sliderdeco2.jpeg" alt="Decoración 2">
+        <div class="texto-slide">
+          <h2>Estilo único</h2>
+          <p>Hecho a mano por artesanos nicaragüenses</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 2rem;">Productos de Decoración</h2>
+    <div id="decoracion-productos" class="product-grid"></div>
+  </main>
+  <!-- /#pagina-decoracion -->
+
+  <!-- ===== MODALES ===== -->
+  <!-- Carrito -->
+  <div id="cart-modal" class="cart-modal-right">
+    <div class="cart-content">
+      <span class="close-btn" onclick="cerrarCarrito()">&times;</span>
+      <h2>Carrito de Compras</h2>
+      <ul id="cart-items"></ul>
+      <p id="cart-total"></p>
+    </div>
+  </div>
+  <!-- Cuenta -->
+  <div id="account-modal" class="modal">
+    <div class="modal-content modern-login">
+      <span class="close-btn" onclick="cerrarCuenta()">&times;</span>
+      <h2><span style="color: #0071ce;">nica shop</span> | Inicia Sesión</h2>
+      <p class="sub-text">¡Únete a nuestra comunidad!</p>
+      <input type="text" id="usuario" placeholder="Nombre de usuario" class="input-modern">
+      <input type="password" id="password" placeholder="Contraseña" class="input-modern">
+      <input type="password" id="confirm" placeholder="Confirmar Contraseña" class="input-modern">
+      <input type="email" id="email" placeholder="Email" class="input-modern">
+      <label class="checkbox-modern">
+        <input type="checkbox" id="esVendedor"> Soy un vendedor
+      </label>
+      <button onclick="registrarUsuario()" class="btn-modern">Iniciar Sesión</button>
+    </div>
+  </div>
+  <!-- Vender producto -->
+  <div id="form-vender" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="cerrarFormularioProducto()">&times;</span>
+      <h2>Subir producto</h2>
+      <input type="text" id="nuevoNombre" placeholder="Nombre del producto">
+      <input type="text" id="nuevaImagen" placeholder="URL de imagen">
+      <input type="number" id="nuevoPrecio" placeholder="Precio">
+      <select id="nuevaCategoria">
+        <option value="Artesania">Artesanía</option>
+        <option value="Trajes">Trajes</option>
+        <option value="Arte">Arte</option>
+        <option value="Juguetes">Juguetes</option>
+      </select>
+      <textarea id="nuevaDescripcion" placeholder="Descripción del producto"></textarea>
+      <button onclick="guardarProducto()">Subir</button>
+      <button onclick="abrirModalVender()">Vender un producto</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 TuNica. Todos los Derechos Reservados.</p>
+  </footer>
+
+  <!-- TU SCRIPT -->
+  <script src="script.js"></script>
+  <div id="toast" class="toast"></div>
+</body>
+</html>

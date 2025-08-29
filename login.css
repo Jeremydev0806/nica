@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 800px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  border: 2px solid black;
+}
+
+/* FORMULARIOS */
+.container-forms {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.sign-in,
+.sign-up {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Formulario de Iniciar Sesión a la derecha */
+.sign-in {
+  left: 50%;
+  z-index: 2;
+  opacity: 1;
+}
+
+/* Formulario de Registro a la izquierda */
+.sign-up {
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Al activar .toggle */
+.container.toggle .sign-in {
+  left: 100%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.toggle .sign-up {
+  left: 0;
+  opacity: 1;
+  z-index: 2;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-forms h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.container-forms span {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.container-input {
+  width: 300px;
+  height: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.container-input input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+
+.container-forms a {
+  color: black;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.button {
+  width: 170px;
+  height: 45px;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #0071ce;
+  color: white;
+}
+
+/* PANEL DE BIENVENIDA */
+.container-welcome {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0071ce;
+  border-radius: 0 50% 50% 0;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  z-index: 1; /* IMPORTANTE: debajo de formularios */
+}
+
+.container.toggle .container-welcome {
+  left: 50%;
+  border-radius: 50% 0 0 50%;
+}
+
+.container-welcome .welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  color: white;
+  padding: 0 50px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.container-welcome h3 {
+  font-size: 40px;
+}
+
+.container-welcome p {
+  font-size: 14px;
+}
+
+.container-welcome .button {
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+}
+
+/* POSICIÓN DE TEXTOS */
+.welcome-sign-up {
+  transform: translateX(0%);
+}
+
+.welcome-sign-in {
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+.container.toggle .welcome-sign-up {
+  transform: translateX(100%);
+}
+
+.container.toggle .welcome-sign-in {
+  transform: translateX(0%);
+}
