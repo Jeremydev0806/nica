@@ -445,6 +445,7 @@ function mostrarProductosDecoracion() {
   const contenedor = document.getElementById("decoracion-productos");
   contenedor.innerHTML = "";
 
+
   decoracion.forEach(p => {
     const div = document.createElement("div");
     div.className = "product";
@@ -496,3 +497,172 @@ function mostrarToast(mensaje) {
     toast.classList.remove("show");
   }, 3000); 
 }
+
+const zapatos = [
+  {
+    nombre: "Zapatos de cuero",
+    precio: 1200,
+    imagen: "images/zapato de cuero.jpg",
+    descripcion: "Elegantes y cómodos, hechos a mano."
+  },
+  {
+    nombre: "Sandalias artesanales",
+    precio: 800,
+    imagen: "images/sandalias-artesanales.jpg",
+    descripcion: "Perfectas para el verano."
+  },
+  {
+    nombre: "Botines tradicionales",
+    precio: 1500,
+    imagen: "images/botas2.jfif",
+    descripcion: "Hechos con cuero nacional de alta calidad."
+  }
+];
+
+function mostrarProductosZapatos() {
+  const contenedor = document.getElementById("zapatos-productos");
+  contenedor.innerHTML = "";
+
+  zapatos.forEach(prod => {
+    const item = document.createElement("div");
+    item.classList.add("product-card");
+    item.innerHTML = `
+      <img src="${prod.imagen}" alt="${prod.nombre}">
+      <h3>${prod.nombre}</h3>
+      <p>${prod.descripcion}</p>
+      <span>C$ ${prod.precio}</span>
+      <button onclick="agregarAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.imagen}')">Agregar al carrito</button>
+    `;
+    contenedor.appendChild(item);
+  });
+}
+function mostrarZapatos() {
+  document.getElementById("pagina-principal").style.display = "none";
+  document.getElementById("pagina-decoracion").style.display = "none";
+  document.getElementById("pagina-zapatos").style.display = "block";
+  
+  mostrarProductosZapatos(); // 👈 aquí se cargan los productos
+}
+// ... tu JS previo ...
+
+// === MÁS VENDIDOS ===
+const productosSemana = [
+  { nombre: "Cuadro Tallado", imagen: "images/cuadro tallado.jpg", precio: "C$ 800", destacado: true },
+  { nombre: "Juguete Tradicional", imagen: "images/juguete tra.jfif", precio: "C$ 120", destacado: false },
+  { nombre: "Sombrero Artesanal", imagen: "images/sombrero.jpg", precio: "C$ 350", destacado: false },
+  { nombre: "Bolso Hecho a Mano", imagen: "images/bolso nica.jfif", precio: "C$ 420", destacado: true },
+];
+const productosMes = [
+  { nombre: "Camiseta Folklore", imagen: "images/camisa folklo.jpg", precio: "C$ 240", destacado: false },
+  { nombre: "Taza Pintada", imagen: "images/taza.jpg", precio: "C$ 110", destacado: true },
+  { nombre: "Muñeca Típica", imagen: "images/muñeca.jfif", precio: "C$ 185", destacado: false },
+  { nombre: "Cuadro Moderno", imagen: "images/cuadro moderno.jpg", precio: "C$ 950", destacado: false },
+];
+const productosRecomendados = [
+  { nombre: "Pulsera Artesanal", imagen: "images/pulsera.jfif", precio: "C$ 60", destacado: false },
+  { nombre: "Cartera de Cuero", imagen: "images/cartera.jpg", precio: "C$ 390", destacado: false },
+  { nombre: "Jarra Cerámica", imagen: "images/jarra.jfif", precio: "C$ 150", destacado: true },
+  { nombre: "Llaveros Nicas", imagen: "images/llavero.jpg", precio: "C$ 40", destacado: false },
+];
+
+function renderHotSlider(array, sliderId) {
+  const slider = document.getElementById(sliderId);
+  slider.innerHTML = "";
+  array.forEach(prod => {
+    const div = document.createElement("div");
+    div.className = "hot-product-card";
+    div.innerHTML = `
+      ${prod.destacado ? `<span class="hot-badge">HOT</span>` : ""}
+      <img src="${prod.imagen}" alt="${prod.nombre}">
+      <h3>${prod.nombre}</h3>
+      <p class="price">${prod.precio}</p>
+      <button class="btn-hot">Agregar al carrito</button>
+    `;
+    slider.appendChild(div);
+  });
+}
+
+renderHotSlider(productosSemana, 'slider-semana');
+renderHotSlider(productosMes, 'slider-mes');
+renderHotSlider(productosRecomendados, 'slider-recomendados');
+
+// Tabs de los sliders
+document.querySelectorAll('.hot-tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.hot-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tipo = btn.getAttribute('data-slider');
+    document.querySelectorAll('.hot-slider-wrap').forEach(wrap => {
+      wrap.style.display = wrap.getAttribute('data-slider-wrap') === tipo ? 'flex' : 'none';
+    });
+  });
+});
+
+// Flechas para deslizar
+document.querySelectorAll(".slider-arrow").forEach(btn => {
+  btn.addEventListener("click", function() {
+    const tipo = btn.getAttribute("data-slider");
+    const slider = document.getElementById(
+      tipo === "semana"
+        ? "slider-semana"
+        : tipo === "mes"
+        ? "slider-mes"
+        : "slider-recomendados"
+    );
+    const dir = btn.classList.contains("left") ? -1 : 1;
+    const cardWidth = slider.querySelector(".hot-product-card")?.offsetWidth || 180;
+    slider.scrollBy({ left: dir * cardWidth * 2, behavior: "smooth" });
+  });
+});
+
+// Mostrar "Más Vendidos" desde el menú lateral
+document.getElementById('mas-vendidos-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('pagina-principal').style.display = 'none';
+  document.getElementById('pagina-decoracion').style.display = 'none';
+  document.getElementById('pagina-zapatos').style.display = 'none';
+  document.getElementById('mas-vendidos-section').style.display = 'block';
+});
+// Ocultar "Más Vendidos" al ir a Inicio
+document.querySelector('#main-menu li a[href="index.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('mas-vendidos-section').style.display = 'none';
+  document.getElementById('pagina-principal').style.display = 'block';
+  document.getElementById('pagina-decoracion').style.display = 'none';
+  document.getElementById('pagina-zapatos').style.display = 'none';
+});
+
+// Mostrar sección Novedades
+document.getElementById("novedades-toggle").addEventListener("click", function () {
+  document.getElementById("pagina-principal").style.display = "none";
+  document.getElementById("pagina-decoracion").style.display = "none";
+  document.getElementById("pagina-zapatos").style.display = "none";
+  document.getElementById("mas-vendidos-section").style.display = "none";
+  document.getElementById("pagina-novedades").style.display = "block";
+
+  // cerrar menú lateral al hacer clic
+  document.getElementById("side-menu").classList.remove("active");
+});
+
+// Abrir modal de vender
+function abrirFormularioProducto() {
+  document.getElementById("form-vender").style.display = "block";
+}
+
+// Cerrar modal de vender
+function cerrarFormularioProducto() {
+  document.getElementById("form-vender").style.display = "none";
+}
+
+// Cerrar el menú lateral si se hace clic fuera de él
+document.addEventListener("click", function(e) {
+  const sideMenu = document.getElementById("side-menu");
+  const menuToggle = document.getElementById("menu-toggle");
+
+  // Si el menú está abierto y el clic NO fue dentro del menú ni en el botón
+  if (sideMenu.classList.contains("active") &&
+      !sideMenu.contains(e.target) &&
+      !menuToggle.contains(e.target)) {
+    sideMenu.classList.remove("active");
+  }
+});
