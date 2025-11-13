@@ -119,9 +119,8 @@ function mostrarProductos() {
   });
 }
 
-// ===============================================
 // FUNCIONES CART / CATEGORÍA / BÚSQUEDA / ETC
-// ===============================================
+
 
 function agregarAlCarrito(id) {
   const producto = productos.find(p => p.id === id);
@@ -163,7 +162,7 @@ function buscarProductos() {
       <p>$${p.precio}</p>
       <p class="descripcion">${p.descripcion}</p>
       <button onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">🔊 Escuchar</button>
+      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">Escuchar</button>
     `;
     contenedor.appendChild(div);
   });
@@ -186,7 +185,7 @@ document.querySelector('.search').addEventListener('input', (e) => {
       <p>$${p.precio}</p>
       <p class="descripcion">${p.descripcion}</p>
       <button onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">🔊 Escuchar</button>
+      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')"> Escuchar</button>
     `;
     contenedor.appendChild(div);
   });
@@ -295,7 +294,7 @@ function filtrarPorCategoria(categoria) {
       <p>$${p.precio}</p>
       <p class="descripcion">${p.descripcion}</p>
       <button onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">🔊 Escuchar</button>
+      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">Escuchar</button>
     `;
     contenedor.appendChild(div);
   });
@@ -634,9 +633,6 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// ===============================================
-// ADD-ON JS PARA PRODUCTOS SUBIDOS (sin editar/eliminar)
-// ===============================================
 
 // Guardar producto subido
 function guardarProducto() {
@@ -793,7 +789,7 @@ document.querySelector('.search').addEventListener('input', (e) => {
       <button class="toggle-desc-btn" onclick="toggleDescripcion(this)">&#9660; Ver descripción</button>
       <div class="descripcion oculto">${p.descripcion}</div>
       <button onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">🔊 Escuchar</button>
+      <button class="btn-voz" onclick="leerDescripcion('${p.descripcion.replace(/'/g, "\\'")}')">Escuchar</button>
     `;
     contenedor.appendChild(div);
   });
