@@ -664,7 +664,7 @@ body {
 .product-card span {
   display: block;
   font-weight: bold;
-  color: #0071ce; /* azul de TuNica */
+  color: #0071ce; 
   margin: 0.6rem 0;
 }
 
@@ -1003,4 +1003,31 @@ body {
   background: rgba(255,255,255,0.25);
   color: #ffdd57;
   transform: translateY(-2px);
+}
+
+/* --- NUEVO BLOQUE PARA DESCRIPCIÓN OCULTA PRODUCTO --- */
+.descripcion.oculto {
+  display: none;
+}
+.descripcion {
+  margin: 0.8em 0 0.7em 0;
+  color: #444;
+  font-size: 0.96em;
+  text-align: left;
+}
+.toggle-desc-btn {
+  background: none;
+  border: none;
+  color: #0071ce;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 3px;
+  margin-top: 5px;
+  padding: 3px 0 6px 0;
+  transition: color 0.2s;
+  display: block;
+  text-align: left;
+}
+.toggle-desc-btn:hover {
+  color: #0056b3;
 }

@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/Recurso 3.png" type="image/png" sizes="32x32">
-<link rel="icon" href="images/Recurso 3.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="images/Recurso 3.png">
+  <link rel="icon" href="images/Recurso 3.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="images/Recurso 3.png">
   <title>nica</title>
   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="images/cuadro tallado.jpg">
-  
+  <link rel="stylesheet" href="images/cuadro tallado.jpg">
 </head>
 <body>
- 
   <header class="header">
     <div class="logo">
       <img src="images/Recurso 6.png" alt="Logo nica">
@@ -23,17 +21,13 @@
       <button id="cart-btn">🛒(0)</button>
     </div>
   </header>
-
-  <!-- BOTÓN MENU -->
   <button id="menu-toggle" class="menu-toggle">☰</button>
-
-  <!-- MENÚ LATERAL -->
   <nav id="side-menu" class="side-menu">
     <ul id="main-menu">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="#" id="otras-cat-link">Otras categorías</a></li>
       <li><a href="#" id="mas-vendidos-link">Los Más Vendidos</a></li>
-     <li><a href="#" id="novedades-toggle">Novedades</a></li>
+      <li><a href="#" id="novedades-toggle">Novedades</a></li>
       <li><a href="login.html">Identifícate</a></li>
     </ul>
     <ul id="otras-categorias-submenu" style="display: none;">
@@ -41,13 +35,9 @@
       <li><a href="#" onclick="mostrarDecoracion()">Decoración</a></li>
       <li><a href="#" onclick="filtrarPorCategoria('Instrumentos')">Instrumentos</a></li>
       <li><a href="#" onclick="mostrarZapatos()">Zapatos</a></li>
-
     </ul>
   </nav>
-
-
   <div id="pagina-principal">
-    <!-- SLIDER PRINCIPAL -->
     <div class="publicidad-slider" id="slider-principal">
       <div class="slide active">
         <img src="images/WhatsApp Image 2025-06-18 at 8.30.48 AM.jpeg" alt="Promoción 1">
@@ -74,8 +64,6 @@
         </div>
       </div>
     </div>
-
-  
     <nav class="nav" id="barra-categorias">
       <ul>
         <li><a href="#" onclick="filtrarPorCategoria('todos')">Todo</a></li>
@@ -85,20 +73,11 @@
         <li><a href="#" onclick="filtrarPorCategoria('Juguetes')">Juguetes</a></li>
       </ul>
     </nav>
-
-    
     <main class="product-grid" id="product-list">
-      <h2>Productos</h2>
       <div id="Lista-Producto"></div>
     </main>
   </div>
-
-
-  <!-- ===== PÁGINA DECORACIÓN ===== -->
   <main id="pagina-decoracion" style="display: none; padding: 2rem;">
-   
-
-
     <div class="slider-decoracion">
       <div class="slide-deco active">
         <img src="images/slideco.jpeg" alt="Decoración 1">
@@ -115,14 +94,10 @@
         </div>
       </div>
     </div>
-
     <h2 style="margin-top: 2rem;">Productos de Decoración</h2>
     <div id="decoracion-productos" class="product-grid"></div>
   </main>
-
-
   <main id="pagina-zapatos" style="display: none; padding: 2rem;">
-   
     <div class="slider-zapatos">
       <div class="slide-zap active">
         <img src="images/zza.png" alt="Zapato 1">
@@ -139,83 +114,68 @@
         </div>
       </div>
     </div>
-
     <h2 style="margin-top: 2rem;">Productos de Zapatos</h2>
     <div id="zapatos-productos" class="product-grid"></div>
   </main>
-
-
- 
-
-
-<section id="mas-vendidos-section" class="hot-products-section" style="display: none;">
-  <h2 class="hot-main-title">🔥 Los Más Vendidos 🔥</h2>
-
-  <div class="hot-group">
-    <h3 class="hot-group-title">Esta semana</h3>
-    <div class="hot-slider-wrap">
-      <button class="slider-arrow left" data-slider="semana">&#8592;</button>
-      <div id="slider-semana" class="hot-products-slider"></div>
-      <button class="slider-arrow right" data-slider="semana">&#8594;</button>
+  <section id="mas-vendidos-section" class="hot-products-section" style="display: none;">
+    <h2 class="hot-main-title">🔥 Los Más Vendidos 🔥</h2>
+    <div class="hot-group">
+      <h3 class="hot-group-title">Esta semana</h3>
+      <div class="hot-slider-wrap">
+        <button class="slider-arrow left" data-slider="semana">&#8592;</button>
+        <div id="slider-semana" class="hot-products-slider"></div>
+        <button class="slider-arrow right" data-slider="semana">&#8594;</button>
+      </div>
     </div>
-  </div>
-
-  <div class="hot-group">
-    <h3 class="hot-group-title">Este mes</h3>
-    <div class="hot-slider-wrap">
-      <button class="slider-arrow left" data-slider="mes">&#8592;</button>
-      <div id="slider-mes" class="hot-products-slider"></div>
-      <button class="slider-arrow right" data-slider="mes">&#8594;</button>
+    <div class="hot-group">
+      <h3 class="hot-group-title">Este mes</h3>
+      <div class="hot-slider-wrap">
+        <button class="slider-arrow left" data-slider="mes">&#8592;</button>
+        <div id="slider-mes" class="hot-products-slider"></div>
+        <button class="slider-arrow right" data-slider="mes">&#8594;</button>
+      </div>
     </div>
-  </div>
-
-  <div class="hot-group">
-    <h3 class="hot-group-title">Recomendados para ti</h3>
-    <div class="hot-slider-wrap">
-      <button class="slider-arrow left" data-slider="recomendados">&#8592;</button>
-      <div id="slider-recomendados" class="hot-products-slider"></div>
-      <button class="slider-arrow right" data-slider="recomendados">&#8594;</button>
-    </div>
-  </div>
-</section>
-
-<!-- PÁGINA NOVEDADES-->
-<main id="pagina-novedades" style="display: none; padding: 2rem;">
-  <section class="novedades-contacto">
-    <h2>Contáctanos</h2>
-    <p>
-      <a href="https://www.instagram.com/nnicashop?igsh=Mm9rMXg5Z3pvNGNi" target="_blank" class="contact-link">
-        <ion-icon name="logo-instagram"></ion-icon> Instagram: @nica_shop
-      </a>
-    </p>
-    <p>
-      <a href="contacto.nicashop@gmail.com" class="contact-link">
-        <ion-icon name="mail-outline"></ion-icon> Correo: contacto@nicashop.com
-      </a>
-    </p>
-    <p>
-      <a href="+505 7640 5532" class="contact-link">
-        <ion-icon name="call-outline"></ion-icon> Teléfono: +505 7640 5532
-      </a>
-    </p>
-  </section>
-
-  <section class="novedades-info">
-    <h2>Novedades</h2>
-    <div class="novedad-card">
-      <p>¿Sabías que todos nuestros productos provienen de negocios locales?</p>
-    </div>
-    <div class="novedad-card">
-      <p>¿Quieres saber como vender con nosotros?</p>
-    </div>
-    <div class="novedad-card">
-      <p>Nuestros artesanos utilizan materiales auténticos de la región.</p>
+    <div class="hot-group">
+      <h3 class="hot-group-title">Recomendados para ti</h3>
+      <div class="hot-slider-wrap">
+        <button class="slider-arrow left" data-slider="recomendados">&#8592;</button>
+        <div id="slider-recomendados" class="hot-products-slider"></div>
+        <button class="slider-arrow right" data-slider="recomendados">&#8594;</button>
+      </div>
     </div>
   </section>
-</main>
-
- 
-  <!-- Carrito -->
+  <main id="pagina-novedades" style="display: none; padding: 2rem;">
+    <section class="novedades-contacto">
+      <h2>Contáctanos</h2>
+      <p>
+        <a href="https://www.instagram.com/nnicashop?igsh=Mm9rMXg5Z3pvNGNi" target="_blank" class="contact-link">
+          <ion-icon name="logo-instagram"></ion-icon> Instagram: @nica_shop
+        </a>
+      </p>
+      <p>
+        <a href="#" class="contact-link">
+          <ion-icon name="mail-outline"></ion-icon> Correo: contacto.nicashop@gmail.com
+        </a>
+      </p>
+      <p>
+        <a href="#" class="contact-link">
+          <ion-icon name="call-outline"></ion-icon> Teléfono: +505 7640 5532
+        </a>
+      </p>
+    </section>
+    <section class="novedades-info">
+      <h2>Novedades</h2>
+      <div class="novedad-card">
+        <p>¿Sabías que todos nuestros productos provienen de negocios locales?</p>
+      </div>
+      <div class="novedad-card">
+        <p>¿Quieres saber como vender con nosotros?</p>
+      </div>
+      <div class="novedad-card">
+        <p>Nuestros artesanos utilizan materiales auténticos de la región.</p>
+      </div>
+    </section>
+  </main>
   <div id="cart-modal" class="cart-modal-right">
     <div class="cart-content">
       <span class="close-btn" onclick="cerrarCarrito()">&times;</span>
@@ -240,32 +200,28 @@
       <button onclick="registrarUsuario()" class="btn-modern">Iniciar Sesión</button>
     </div>
   </div>
- 
-<div id="form-vender" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close-btn" onclick="cerrarFormularioProducto()">&times;</span>
-    <h2>Subir producto</h2>
-    <input type="text" id="nuevoNombre" placeholder="Nombre del producto">
-    <input type="text" id="nuevaImagen" placeholder="URL de imagen">
-    <input type="number" id="nuevoPrecio" placeholder="Precio">
-    <select id="nuevaCategoria">
-      <option value="Artesania">Artesanía</option>
-      <option value="Trajes">Trajes</option>
-      <option value="Arte">Arte</option>
-      <option value="Juguetes">Juguetes</option>
-    </select>
-    <textarea id="nuevaDescripcion" placeholder="Descripción del producto"></textarea>
-    <button onclick="guardarProducto()">Subir</button>
+  <!--Formulario vendedor para subir imagen local -->
+  <div id="form-vender" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn" onclick="cerrarFormularioProducto()">&times;</span>
+      <h2>Subir producto</h2>
+      <input type="text" id="nuevoNombre" placeholder="Nombre del producto">
+      <input type="file" id="nuevaImagenFile" accept="image/*">
+      <input type="number" id="nuevoPrecio" placeholder="Precio">
+      <select id="nuevaCategoria">
+        <option value="Artesania">Artesanía</option>
+        <option value="Trajes">Trajes</option>
+        <option value="Arte">Arte</option>
+        <option value="Juguetes">Juguetes</option>
+      </select>
+      <textarea id="nuevaDescripcion" placeholder="Descripción del producto"></textarea>
+      <button id="btnGuardarProducto" onclick="guardarProducto()">Subir</button>
+   
+    </div>
   </div>
-</div>
- 
-
-  
   <footer class="footer">
     <p>&copy; 2025 nica. Todos los Derechos Reservados.</p>
   </footer>
-
-  <!-- TU SCRIPT -->
   <script src="script.js"></script>
   <div id="toast" class="toast"></div>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
